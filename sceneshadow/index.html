@@ -45,6 +45,12 @@ header {
   border-bottom: 1px solid rgba(0,0,0,.05);
 }
 header .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
+.crumb { display: flex; align-items: center; gap: 10px; }
+.home { display: inline-flex; align-items: center; font-size: 14px; font-weight: 800; letter-spacing: 0.08em; color: var(--ink-3); text-decoration: none; transition: color .15s ease; }
+.home b { color: var(--brand); font-weight: 800; }
+.home:hover { color: var(--ink); }
+.home-short { display: none; font-size: 26px; line-height: 1; padding: 0 4px; letter-spacing: 0; }
+.crumb-sep { color: var(--line); font-size: 18px; color: #c4c6d4; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; text-decoration: none; }
 .logo img { width: 30px; height: 30px; border-radius: 8px; }
 nav { display: flex; gap: 22px; margin-left: auto; font-size: 15px; color: var(--ink-2); }
@@ -266,6 +272,9 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
   .mobile-only { display: block; }
 }
 @media (max-width: 480px) {
+  .home-full, .crumb-sep { display: none; }
+  .home-short { display: inline; }
+  .crumb { gap: 4px; }
   body { font-size: 16px; }
   .wrap { width: calc(100% - 32px); }
   header .btn { display: none; }
@@ -288,7 +297,11 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#"><img src="assets/icon.png" alt="">스크린 영어 쉐도잉</a>
+    <div class="crumb">
+      <a class="home" href="/" aria-label="MAYBESO 홈으로"><span class="home-full">MAYBE<b>SO</b></span><span class="home-short" aria-hidden="true">‹</span></a>
+      <span class="crumb-sep" aria-hidden="true">›</span>
+      <a class="logo" href="#"><img src="assets/icon.png" alt="">스크린 영어 쉐도잉</a>
+    </div>
     <nav aria-label="주요 메뉴">
       <a href="#app">앱</a>
       <a href="#pc">PC 확장 프로그램</a>
@@ -545,6 +558,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 <footer>
   <div class="wrap">
     <div class="links">
+      <a href="/">MAYBESO 홈</a>
       <a href="https://flame-snout-792.notion.site/PRIVACY_POLICY_SceneShadow-42c2f3deeab6830bbdd5018fafec2eb0">개인정보처리방침</a>
       <a href="https://flame-snout-792.notion.site/4132f3deeab68156b26dcd875169d724">계정 및 데이터 삭제</a>
       <a href="mailto:futureurhero@gmail.com">문의 futureurhero@gmail.com</a>
