@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAYBESO — 혼자서도 이어 가는 영어 공부 앱</title>
+<meta name="description" content="MAYBESO는 스크린 영어 쉐도잉, 보카픽처럼 혼자서도 꾸준히 영어 공부를 이어 가게 돕는 앱을 만듭니다.">
+<meta property="og:title" content="MAYBESO">
+<meta property="og:description" content="스크린 영어 쉐도잉 · 보카픽">
+<link rel="icon" href="assets/sceneshadow.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root {
+  --ink: #15172b;
+  --ink-2: #4a4d63;
+  --ink-3: #7c7f95;
+  --line: #e7e8f0;
+  --bg: #ffffff;
+  --soft: #f6f7fb;
+  --brand: #4c58d6;
+  --radius: 22px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 17px; line-height: 1.6; letter-spacing: -0.01em; word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+header .wrap { display: flex; align-items: center; height: 72px; }
+.wordmark { font-weight: 800; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; }
+.wordmark span { color: var(--brand); }
+header nav { margin-left: auto; display: flex; gap: 22px; font-size: 15px; color: var(--ink-2); }
+header nav a { text-decoration: none; }
+header nav a:hover { color: var(--ink); }
+
+.hero { padding: 88px 0 72px; }
+.hero h1 { margin: 0 0 20px; font-size: clamp(40px, 6vw, 72px); line-height: 1.12; letter-spacing: -0.04em; font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--brand); }
+.hero p { margin: 0; max-width: 32em; font-size: clamp(17px, 1.7vw, 20px); color: var(--ink-2); }
+
+.apps { padding: 24px 0 96px; }
+.apps h2 { margin: 0 0 24px; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; color: var(--ink-3); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.app { display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); }
+.app-top { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.app img { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 1px 2px rgba(21,23,43,.08); }
+.app h3 { margin: 0; font-size: 22px; letter-spacing: -0.02em; }
+.app .tag { margin: 2px 0 0; font-size: 14px; color: var(--ink-3); }
+.app p.desc { margin: 0 0 24px; color: var(--ink-2); flex: 1; }
+.app .links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 999px; font-size: 15px; font-weight: 650; text-decoration: none; transition: background .15s ease, transform .15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn.primary { background: var(--ink); color: #fff; }
+.btn.ghost { background: var(--soft); color: var(--ink); }
+
+.about { padding: 72px 0; background: var(--soft); }
+.about p { margin: 0; max-width: 36em; font-size: 18px; color: var(--ink-2); }
+.about b { color: var(--ink); }
+
+footer { padding: 40px 0 56px; font-size: 14px; color: var(--ink-3); }
+footer .links { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 10px; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--ink); }
+
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  header nav { gap: 14px; font-size: 14px; }
+  .hero { padding: 56px 0 48px; }
+  .app { padding: 22px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="/">MAYBE<span>SO</span></a>
+    <nav>
+      <a href="#apps">앱</a>
+      <a href="#about">소개</a>
+      <a href="mailto:futureurhero@gmail.com">문의</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>영어, 늘 수 있을까?<br><em>Maybe so.</em></h1>
+      <p>MAYBESO는 혼자서도 매일 조금씩 영어 공부를 이어 가게 돕는 앱을 만들어요. 보던 영상, 쓰던 단어장처럼 이미 가진 것으로 시작해요.</p>
+    </div>
+  </section>
+
+  <section class="apps" id="apps">
+    <div class="wrap">
+      <h2>우리가 만든 앱</h2>
+      <div class="grid">
+        <article class="app">
+          <div class="app-top">
+            <img src="assets/sceneshadow.png" alt="">
+            <div>
+              <h3>스크린 영어 쉐도잉</h3>
+              <p class="tag">미드·영화로 하는 영어 쉐도잉</p>
+            </div>
+          </div>
+          <p class="desc">가지고 있는 영상 파일은 폰에서, 넷플릭스·유튜브는 PC 크롬에서. 문장 단위로 반복하고, 안 들리는 소리는 들리니로, 모르는 표현은 AI 설명으로 익혀요.</p>
+          <div class="links">
+            <a class="btn primary" href="/sceneshadow/">자세히 보기</a>
+            <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.futureurhero.sceneshadow">Google Play</a>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app-top">
+            <img src="assets/vocapic.png" alt="">
+            <div>
+              <h3>보카픽</h3>
+              <p class="tag">찍으면 만들어지는 영단어장</p>
+            </div>
+          </div>
+          <p class="desc">종이 단어장을 찍으면 영어와 뜻을 짝지어 저장하고, 매일 외울 만큼만 복습해요. 교과서·문제집·학원 프린트를 내 단어장으로 바로 옮겨요.</p>
+          <div class="links">
+            <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.snapvocab">Google Play</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <p><b>MAYBESO</b>라는 이름은 “maybe so(그럴지도)”에서 왔어요. 거창한 결심보다, 오늘 한 문장 한 단어가 쌓이면 어느새 될지도 모른다는 마음으로 만들어요.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="/sceneshadow/">스크린 영어 쉐도잉</a>
+      <a href="https://play.google.com/store/apps/details?id=com.snapvocab">보카픽</a>
+      <a href="mailto:futureurhero@gmail.com">문의 futureurhero@gmail.com</a>
+    </div>
+    <div>© 2026 MAYBESO</div>
+  </div>
+</footer>
+</body>
+</html>
