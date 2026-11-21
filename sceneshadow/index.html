@@ -388,9 +388,9 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 .install { background: var(--night); color: #f2f2f5; padding-top: 0; }
 .install-box { border-top: 1px solid #262833; padding-top: 72px; }
 .install .kicker { color: var(--amber); }
-/* 설치 방법은 찾아오는 사람이 많아 제목을 크게, 앞에 노란 막대로 눈에 띄게 */
-.install-title { display: flex; align-items: center; gap: 14px; }
-.install-title::before { content: ""; width: 6px; height: 0.9em; border-radius: 3px; background: var(--amber); }
+/* 사람들이 찾아오는 구역(설치 방법·폰과 PC)은 제목을 크게, 앞에 글자색 막대로 눈에 띄게 */
+.kicker-bar { display: flex; align-items: center; gap: 14px; }
+.kicker-bar::before { content: ""; width: 6px; height: 0.9em; border-radius: 3px; background: currentColor; }
 .install .sub { color: #a9abb8; }
 .steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: st; }
 .steps li { background: #1b1c23; border: 1px solid #2a2c36; border-radius: var(--radius); padding: 24px; counter-increment: st; }
@@ -565,7 +565,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 
   <section class="install" id="install">
     <div class="wrap install-box">
-      <div class="kicker kicker-lg install-title">설치 방법</div>
+      <div class="kicker kicker-lg kicker-bar">설치 방법</div>
       <h2>1분이면 끝나요</h2>
       <p class="sub">PC 크롬 브라우저에 한 번만 추가하면, 넷플릭스·유튜브를 열 때마다 자동으로 켜져요.</p>
       <ol class="steps">
@@ -585,7 +585,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 
   <section id="sync">
     <div class="wrap">
-      <div class="kicker">폰과 PC를 하나로</div>
+      <div class="kicker kicker-lg kicker-bar">폰과 PC를 하나로</div>
       <h2>구글 로그인 한 번이면<br>어디서 저장해도 한곳에</h2>
       <p class="sub">로그인은 선택이에요. 로그인하지 않아도 모든 기능을 쓸 수 있고, 저장한 문장은 그 기기에만 남아요.</p>
       <div class="sync-grid">
