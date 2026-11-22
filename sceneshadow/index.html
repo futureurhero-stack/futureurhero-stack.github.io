@@ -729,7 +729,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
       <div class="rule-group">
         <h3>2. 바뀌어요 <small>철자와 다른 소리가 나요</small></h3>
         <div class="rule-list">
-          <div class="rule"><h4>굴리는 t (플랩)</h4><p>모음 사이의 t·d 는 혀를 한 번 튕기는 짧은 ㄹ 소리가 돼요.</p><button class="ex" type="button" data-say="water"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">water</span><span class="arrow">→</span><span class="ko">워럴</span></button></div>
+          <div class="rule"><h4>굴리는 t (플랩)</h4><p>모음 사이의 t·d, 그리고 rt·rd 의 t·d 는 혀를 한 번 튕기는 짧은 ㄹ 소리가 돼요.</p><button class="ex" type="button" data-say="water"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">water</span><span class="arrow">→</span><span class="ko">워럴</span></button><button class="ex" type="button" data-say="party"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">party</span><span class="arrow">→</span><span class="ko">파<small>r</small>리</span></button></div>
           <div class="rule"><h4>된소리 p·t·k</h4><p>s 뒤처럼 숨을 내뿜지 않는 p·t·k 는 ㅃ·ㄸ·ㄲ 처럼 들려요.</p><button class="ex" type="button" data-say="speed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">speed</span><span class="arrow">→</span><span class="ko">스삐~드</span></button></div>
           <div class="rule"><h4>tr·dr → 츄·쥬</h4><p>tr·dr 은 혀가 입천장 쪽으로 당겨져 "츄·쥬"처럼 들려요.</p><button class="ex" type="button" data-say="tree"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">tree</span><span class="arrow">→</span><span class="ko">츄리~</span></button></div>
           <div class="rule"><h4>-ing → -in</h4><p>빠르게 말하면 -ing 끝의 ng 가 n 으로 가볍게 끝나요.</p><button class="ex" type="button" data-say="going home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">going home</span><span class="arrow">→</span><span class="ko">고인홈</span></button></div>
@@ -876,17 +876,28 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
   </div>
 </footer>
 <script>
-// 발음 규칙 예시: 브라우저 영어 음성으로 들려준다 (음성이 없으면 조용히 넘어감)
+// 발음 규칙 예시: 미리 만든 미국 영어 음성 파일(assets/say, tools/make_say.py)을 튼다.
+// 브라우저 내장 음성은 기기마다 달라 맥 크롬에선 한국어 목소리가 읽기도 해서 파일로 바꿨다.
+// 파일을 못 틀 때만 내장 음성으로 읽는다.
+var sayAudio = new Audio(), sayBtn = null;
+function sayDone() { if (sayBtn) sayBtn.classList.remove('playing'); sayBtn = null; }
+function sayFallback(text) {
+  if (!('speechSynthesis' in window)) return sayDone();
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = 0.9;
+  u.onend = u.onerror = sayDone;
+  speechSynthesis.speak(u);
+}
+sayAudio.onended = sayDone;
 document.querySelectorAll('.rule .ex').forEach(function (b) {
   b.addEventListener('click', function () {
-    if (!('speechSynthesis' in window)) return;
-    speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(b.dataset.say);
-    u.lang = 'en-US'; u.rate = 0.9;
-    b.classList.add('playing');
-    u.onend = u.onerror = function () { b.classList.remove('playing'); };
-    speechSynthesis.speak(u);
-    (window.dataLayer = window.dataLayer || []).push({ event: 'rule_listen', rule_example: b.dataset.say });
+    var text = b.dataset.say;
+    sayAudio.pause(); sayDone();
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+    sayBtn = b; b.classList.add('playing');
+    sayAudio.src = 'assets/say/' + text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.mp3';
+    sayAudio.play().catch(function () { sayFallback(text); });
+    (window.dataLayer = window.dataLayer || []).push({ event: 'rule_listen', rule_example: text });
   });
 });
 </script>
