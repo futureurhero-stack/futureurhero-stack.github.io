@@ -432,6 +432,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .legend span { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-size: 15px; color: var(--ink-2); }
 .legend b { color: var(--ink); margin-right: 6px; font-size: 17px; }
+.legend small { font-size: 11px; vertical-align: super; color: var(--brand); font-weight: 700; }
 .rule-group { margin-top: 48px; }
 .rule-group > h3 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; font-size: 22px; letter-spacing: -0.02em; }
 .rule-group > h3 small { color: var(--ink-3); font-size: 15px; font-weight: 500; letter-spacing: 0; }
@@ -439,12 +440,15 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 .rule { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
 .rule h4 { margin: 0; font-size: 17px; letter-spacing: -0.01em; }
 .rule p { margin: 0; color: var(--ink-2); font-size: 15px; line-height: 1.6; word-break: keep-all; flex: 1; }
-.rule .ex { margin-top: 6px; display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; font: inherit; background: var(--brand-soft); border: 0; border-radius: 12px; padding: 10px 12px; cursor: pointer; color: var(--ink); }
+.rule .ex { margin-top: 6px; display: flex; flex-wrap: wrap; row-gap: 2px; align-items: center; gap: 10px; width: 100%; text-align: left; font: inherit; background: var(--brand-soft); border: 0; border-radius: 12px; padding: 10px 12px; cursor: pointer; color: var(--ink); }
 .rule .ex:hover { background: #e3e6fc; }
 .rule .ex svg { width: 18px; height: 18px; flex: none; color: var(--brand); }
 .rule .ex .en { font-weight: 600; white-space: nowrap; }
 .rule .ex .arrow { color: var(--ink-3); }
-.rule .ex .ko { font-weight: 700; color: var(--brand-deep); font-size: 17px; }
+.rule .ex .ko { white-space: nowrap; font-weight: 700; color: var(--brand-deep); font-size: 17px; }
+.rule .ex .ko.st { font-weight: 500; color: var(--ink-2); }
+.rule .ex .ko.st b { font-weight: 800; color: var(--brand-deep); }
+.rule .ex .ko small { font-size: 11px; vertical-align: super; color: var(--brand); font-weight: 700; margin-left: 1px; }
 .rule .ex.playing { outline: 2px solid var(--brand); }
 .rules-note { margin-top: 40px; color: var(--ink-2); font-size: 15px; line-height: 1.7; word-break: keep-all; }
 @media (max-width: 920px) {
@@ -704,12 +708,14 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
     <div class="wrap">
       <div class="kicker kicker-lg kicker-bar">발음 규칙</div>
       <h2>단어는 아는데<br>왜 안 들릴까요?</h2>
-      <p class="sub">원어민은 단어를 하나씩 끊어 말하지 않아요. 소리가 이어지고, 바뀌고, 사라져요. 들리니는 아래 16가지 규칙으로 대사가 실제로 어떻게 들리는지 한글로 풀어 줘요. 예시를 누르면 영어로 들려요.</p>
+      <p class="sub">원어민은 단어를 하나씩 끊어 말하지 않아요. 소리가 이어지고, 바뀌고, 사라져요. 들리니는 아래 25가지 규칙으로 대사가 실제로 어떻게 들리는지 한글로 풀어 줘요. 예시를 누르면 영어로 들려요.</p>
       <div class="legend">
         <span><b>~</b>길게 끌어요 (츄리~)</span>
         <span><b>,</b>잠깐 멈춰요 (벝,은업)</span>
         <span><b>ㄲ·ㄸ·ㅃ</b>숨 없이 단단하게</span>
         <span><b>ㄹ 받침</b>끝 r 소리 (워럴)</span>
+        <span><b>굵은 글자</b>힘 주는 음절 (퍼<b style="margin:0">테</b>이로우)</span>
+        <span><b>작은 글자</b>r·f·v·θ·ð·z 표시 (팬<small>f</small>)</span>
       </div>
       <div class="rule-group">
         <h3>1. 이어져요 <small>단어와 단어 사이가 붙어요</small></h3>
@@ -745,6 +751,25 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
         <div class="rule-list">
           <div class="rule"><h4>목에서 멈추는 t</h4><p>t 를 터뜨리지 않고 목에서 잠깐 멈춰요. 쉼표(,)가 그 멈춤이에요.</p><button class="ex" type="button" data-say="button up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">button up</span><span class="arrow">→</span><span class="ko">벝,은업</span></button></div>
           <div class="rule"><h4>끝 자음 멈춤</h4><p>끝 자음을 터뜨리지 않고 입 모양만 만든 채 다음 소리로 넘어가요.</p><button class="ex" type="button" data-say="good luck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">good luck</span><span class="arrow">→</span><span class="ko">굿럭</span></button></div>
+        </div>
+      </div>
+      <div class="rule-group">
+        <h3>5. 힘 주는 곳 <small>세게, 약하게</small></h3>
+        <div class="rule-list">
+          <div class="rule"><h4>단어 강세</h4><p>단어마다 힘 주는 음절이 하나 있어요. 굵은 음절만 크고 길게, 나머지는 약하게 말해요.</p><button class="ex" type="button" data-say="potato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">potato</span><span class="arrow">→</span><span class="ko st">퍼<b>테</b>이로우</span></button></div>
+          <div class="rule"><h4>문장 리듬</h4><p>명사·동사 같은 내용어는 세게, 기능어는 약하게 말해요. 센 곳만 들려도 뜻이 잡혀요.</p><button class="ex" type="button" data-say="I want to go home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">I want to go home</span><span class="arrow">→</span><span class="ko st">아이<b>워</b>너<b>고</b>우<b>홈</b></span></button></div>
+          <div class="rule"><h4>슈와 (약한 "어")</h4><p>힘을 받지 않는 모음은 철자와 상관없이 흐린 "어"가 돼요.</p><button class="ex" type="button" data-say="banana"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">banana</span><span class="arrow">→</span><span class="ko st">버<b>내</b>너</span></button></div>
+          <div class="rule"><h4>can 과 can't</h4><p>can 은 약하게 "컨", can't 는 세게 "캔" 하고 t 에서 멈춰요. 모음과 힘으로 구별해요.</p><button class="ex" type="button" data-say="I can do it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">I can do it</span><span class="arrow">→</span><span class="ko st">아이컨두윗</span></button><button class="ex" type="button" data-say="I can't do it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">I can't do it</span><span class="arrow">→</span><span class="ko st">아이<b>캔</b>,두윗</span></button></div>
+        </div>
+      </div>
+      <div class="rule-group">
+        <h3>6. 한글로는 같은 소리 <small>작은 글자로 구별해요</small></h3>
+        <div class="rule-list">
+          <div class="rule"><h4>r 과 l</h4><p>r 은 혀를 어디에도 대지 않고 둥글게 말아요. 작은 r 이 붙은 "ㄹ"이 r 이에요.</p><button class="ex" type="button" data-say="right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">right</span><span class="arrow">→</span><span class="ko">라<small>r</small>잇</span></button><button class="ex" type="button" data-say="light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">light</span><span class="arrow">→</span><span class="ko">라잇</span></button></div>
+          <div class="rule"><h4>f 와 p</h4><p>f 는 윗니를 아랫입술에 대고 바람을 내보내요.</p><button class="ex" type="button" data-say="fan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">fan</span><span class="arrow">→</span><span class="ko">팬<small>f</small></span></button><button class="ex" type="button" data-say="pan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">pan</span><span class="arrow">→</span><span class="ko">팬</span></button></div>
+          <div class="rule"><h4>v 와 b</h4><p>v 는 f 처럼 윗니를 아랫입술에 대고 목을 울려요.</p><button class="ex" type="button" data-say="very"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">very</span><span class="arrow">→</span><span class="ko">베<small>v</small>리<small>r</small></span></button><button class="ex" type="button" data-say="berry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">berry</span><span class="arrow">→</span><span class="ko">베리<small>r</small></span></button></div>
+          <div class="rule"><h4>th 두 가지</h4><p>혀끝을 이 사이에 살짝 물고 바람을 내요. 목을 울리지 않으면 θ, 울리면 ð 예요.</p><button class="ex" type="button" data-say="think"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">think</span><span class="arrow">→</span><span class="ko">씽<small>θ</small>크</span></button><button class="ex" type="button" data-say="this"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">this</span><span class="arrow">→</span><span class="ko">디<small>ð</small>스</span></button></div>
+          <div class="rule"><h4>z</h4><p>s 와 같은 자리에서 목을 울려 "즈"에 가깝게 떨려요.</p><button class="ex" type="button" data-say="zoo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">zoo</span><span class="arrow">→</span><span class="ko">주<small>z</small>~</span></button></div>
         </div>
       </div>
       <p class="rules-note">앱의 <b>들리니</b>는 영상에서 꺼낸 실제 소리를 받아 적은 뒤 이 규칙으로 풀어 주고, PC 확장 프로그램은 자막 문장을 같은 규칙으로 풀어 한글 발음·IPA로 보여 줘요. 한글 표기는 소리를 잡는 길잡이일 뿐, 정답은 언제나 원어민 소리예요. 따라 말할 땐 꼭 영상 소리를 들으며 맞춰 보세요.</p>
