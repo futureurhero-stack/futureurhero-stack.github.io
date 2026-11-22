@@ -17,7 +17,6 @@ SPOKEN = {
     'going home': "goin' home",
     'a lot of': 'a lotta',
     'did you': 'didju',  # didja 는 '디자'에 가깝게 읽었다
-    'fades in': 'fadesin',  # 띄어 쓰면 짧은 조각이라 기계음처럼 끊어 읽었다
 }
 
 
