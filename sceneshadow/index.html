@@ -426,6 +426,27 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 .chapters button { all: unset; cursor: pointer; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: #e6e6ec; font-size: 14px; font-weight: 600; }
 .chapters button:hover, .chapters button:focus-visible { border-color: var(--amber); color: var(--amber); }
 .chapters small { color: #8d8fa0; font-weight: 500; margin-right: 6px; }
+/* 발음 규칙 코너: 들리니가 쓰는 규칙을 묶음별로. 예시 표기는 실제 엔진 결과와 같다 */
+.rules { background: var(--bg-2); }
+.rules .kicker { color: var(--brand); }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.legend span { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-size: 15px; color: var(--ink-2); }
+.legend b { color: var(--ink); margin-right: 6px; font-size: 17px; }
+.rule-group { margin-top: 48px; }
+.rule-group > h3 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; font-size: 22px; letter-spacing: -0.02em; }
+.rule-group > h3 small { color: var(--ink-3); font-size: 15px; font-weight: 500; letter-spacing: 0; }
+.rule-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.rule { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.rule h4 { margin: 0; font-size: 17px; letter-spacing: -0.01em; }
+.rule p { margin: 0; color: var(--ink-2); font-size: 15px; line-height: 1.6; word-break: keep-all; flex: 1; }
+.rule .ex { margin-top: 6px; display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; font: inherit; background: var(--brand-soft); border: 0; border-radius: 12px; padding: 10px 12px; cursor: pointer; color: var(--ink); }
+.rule .ex:hover { background: #e3e6fc; }
+.rule .ex svg { width: 18px; height: 18px; flex: none; color: var(--brand); }
+.rule .ex .en { font-weight: 600; white-space: nowrap; }
+.rule .ex .arrow { color: var(--ink-3); }
+.rule .ex .ko { font-weight: 700; color: var(--brand-deep); font-size: 17px; }
+.rule .ex.playing { outline: 2px solid var(--brand); }
+.rules-note { margin-top: 40px; color: var(--ink-2); font-size: 15px; line-height: 1.7; word-break: keep-all; }
 @media (max-width: 920px) {
   .howto-video { grid-template-columns: 1fr; gap: 28px; margin-top: 56px; padding-top: 44px; }
   .yt .play { width: 60px; height: 60px; margin: -30px 0 0 -30px; }
@@ -483,6 +504,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
     <nav aria-label="주요 메뉴">
       <a href="#app">앱</a>
       <a href="#pc">PC 확장 프로그램</a>
+      <a href="#rules">발음 규칙</a>
       <a href="#pricing">프리미엄</a>
       <a href="#faq">자주 묻는 질문</a>
     </nav>
@@ -678,6 +700,57 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
     </div>
   </section>
 
+  <section class="rules" id="rules">
+    <div class="wrap">
+      <div class="kicker kicker-lg kicker-bar">발음 규칙</div>
+      <h2>단어는 아는데<br>왜 안 들릴까요?</h2>
+      <p class="sub">원어민은 단어를 하나씩 끊어 말하지 않아요. 소리가 이어지고, 바뀌고, 사라져요. 들리니는 아래 16가지 규칙으로 대사가 실제로 어떻게 들리는지 한글로 풀어 줘요. 예시를 누르면 영어로 들려요.</p>
+      <div class="legend">
+        <span><b>~</b>길게 끌어요 (츄리~)</span>
+        <span><b>,</b>잠깐 멈춰요 (벝,은업)</span>
+        <span><b>ㄲ·ㄸ·ㅃ</b>숨 없이 단단하게</span>
+        <span><b>ㄹ 받침</b>끝 r 소리 (워럴)</span>
+      </div>
+      <div class="rule-group">
+        <h3>1. 이어져요 <small>단어와 단어 사이가 붙어요</small></h3>
+        <div class="rule-list">
+          <div class="rule"><h4>연음</h4><p>앞 단어 끝 자음이 뒤 단어 첫 모음에 붙어 한 덩어리로 들려요.</p><button class="ex" type="button" data-say="fades in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">fades in</span><span class="arrow">→</span><span class="ko">페이진</span></button></div>
+          <div class="rule"><h4>h 탈락</h4><p>him·her·have 같은 대명사·조동사의 h 가 빠지고 앞 단어에 붙어요.</p><button class="ex" type="button" data-say="tell him"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">tell him</span><span class="arrow">→</span><span class="ko">텔림</span></button></div>
+          <div class="rule"><h4>미끄러짐</h4><p>모음과 모음 사이에 w·y 소리가 살짝 끼어 끊기지 않고 이어져요.</p><button class="ex" type="button" data-say="go on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">go on</span><span class="arrow">→</span><span class="ko">고우완</span></button></div>
+          <div class="rule"><h4>동화</h4><p>앞 소리가 뒤 소리와 섞여 다른 소리가 돼요. d·t 뒤의 you 가 대표적이에요.</p><button class="ex" type="button" data-say="did you"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">did you</span><span class="arrow">→</span><span class="ko">디쥬</span></button></div>
+        </div>
+      </div>
+      <div class="rule-group">
+        <h3>2. 바뀌어요 <small>철자와 다른 소리가 나요</small></h3>
+        <div class="rule-list">
+          <div class="rule"><h4>굴리는 t (플랩)</h4><p>모음 사이의 t·d 는 혀를 한 번 튕기는 짧은 ㄹ 소리가 돼요.</p><button class="ex" type="button" data-say="water"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">water</span><span class="arrow">→</span><span class="ko">워럴</span></button></div>
+          <div class="rule"><h4>된소리 p·t·k</h4><p>s 뒤처럼 숨을 내뿜지 않는 p·t·k 는 ㅃ·ㄸ·ㄲ 처럼 들려요.</p><button class="ex" type="button" data-say="speed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">speed</span><span class="arrow">→</span><span class="ko">스삐~드</span></button></div>
+          <div class="rule"><h4>tr·dr → 츄·쥬</h4><p>tr·dr 은 혀가 입천장 쪽으로 당겨져 "츄·쥬"처럼 들려요.</p><button class="ex" type="button" data-say="tree"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">tree</span><span class="arrow">→</span><span class="ko">츄리~</span></button></div>
+          <div class="rule"><h4>-ing → -in</h4><p>빠르게 말하면 -ing 끝의 ng 가 n 으로 가볍게 끝나요.</p><button class="ex" type="button" data-say="going home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">going home</span><span class="arrow">→</span><span class="ko">고인홈</span></button></div>
+          <div class="rule"><h4>긴 "이" 뒤의 l</h4><p>긴 "이" 뒤 끝 l 은 사이에 "어"가 살짝 끼어 두 박자로 들려요.</p><button class="ex" type="button" data-say="real"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">real</span><span class="arrow">→</span><span class="ko">리~얼</span></button></div>
+        </div>
+      </div>
+      <div class="rule-group">
+        <h3>3. 사라져요 <small>약한 소리는 거의 안 들려요</small></h3>
+        <div class="rule-list">
+          <div class="rule"><h4>자음 탈락</h4><p>자음 사이에 낀 t·d, 자음 앞의 've 처럼 약한 자음은 거의 소리 나지 않아요.</p><button class="ex" type="button" data-say="last night"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">last night</span><span class="arrow">→</span><span class="ko">래스나잇</span></button></div>
+          <div class="rule"><h4>nt 줄임</h4><p>n 뒤의 t 가 빠지고 n 으로 이어져요.</p><button class="ex" type="button" data-say="twenty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">twenty</span><span class="arrow">→</span><span class="ko">트웨니</span></button></div>
+          <div class="rule"><h4>겹자음</h4><p>같은 자음이 겹치면 두 번 내지 않고 한 번만 내요.</p><button class="ex" type="button" data-say="good day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">good day</span><span class="arrow">→</span><span class="ko">구데이</span></button></div>
+          <div class="rule"><h4>약하게 스치는 말</h4><p>of·and·to 같은 기능어는 힘을 받지 않아 "어" 정도로 스쳐 가요.</p><button class="ex" type="button" data-say="a lot of"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">a lot of</span><span class="arrow">→</span><span class="ko">얼라러브</span></button></div>
+          <div class="rule"><h4>줄여 말하기</h4><p>자주 붙어 다니는 말은 통째로 짧게 줄어요.</p><button class="ex" type="button" data-say="want to go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">want to go</span><span class="arrow">→</span><span class="ko">워너고우</span></button></div>
+        </div>
+      </div>
+      <div class="rule-group">
+        <h3>4. 멈춰요 <small>소리를 터뜨리지 않아요</small></h3>
+        <div class="rule-list">
+          <div class="rule"><h4>목에서 멈추는 t</h4><p>t 를 터뜨리지 않고 목에서 잠깐 멈춰요. 쉼표(,)가 그 멈춤이에요.</p><button class="ex" type="button" data-say="button up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">button up</span><span class="arrow">→</span><span class="ko">벝,은업</span></button></div>
+          <div class="rule"><h4>끝 자음 멈춤</h4><p>끝 자음을 터뜨리지 않고 입 모양만 만든 채 다음 소리로 넘어가요.</p><button class="ex" type="button" data-say="good luck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">good luck</span><span class="arrow">→</span><span class="ko">굿럭</span></button></div>
+        </div>
+      </div>
+      <p class="rules-note">앱의 <b>들리니</b>는 영상에서 꺼낸 실제 소리를 받아 적은 뒤 이 규칙으로 풀어 주고, PC 확장 프로그램은 자막 문장을 같은 규칙으로 풀어 한글 발음·IPA로 보여 줘요. 한글 표기는 소리를 잡는 길잡이일 뿐, 정답은 언제나 원어민 소리예요. 따라 말할 땐 꼭 영상 소리를 들으며 맞춰 보세요.</p>
+    </div>
+  </section>
+
   <section class="pricing" id="pricing">
     <div class="wrap">
       <div class="kicker">요금</div>
@@ -777,5 +850,20 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
     <div>© 2026 myhero</div>
   </div>
 </footer>
+<script>
+// 발음 규칙 예시: 브라우저 영어 음성으로 들려준다 (음성이 없으면 조용히 넘어감)
+document.querySelectorAll('.rule .ex').forEach(function (b) {
+  b.addEventListener('click', function () {
+    if (!('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(b.dataset.say);
+    u.lang = 'en-US'; u.rate = 0.9;
+    b.classList.add('playing');
+    u.onend = u.onerror = function () { b.classList.remove('playing'); };
+    speechSynthesis.speak(u);
+    (window.dataLayer = window.dataLayer || []).push({ event: 'rule_listen', rule_example: b.dataset.say });
+  });
+});
+</script>
 </body>
 </html>
