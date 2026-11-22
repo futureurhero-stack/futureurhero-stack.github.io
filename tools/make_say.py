@@ -16,7 +16,7 @@ SPOKEN = {
     'tell him': 'tellim',  # "tell 'im" 은 따옴표를 I(아이)로 읽었다
     'going home': "goin' home",
     'a lot of': 'a lotta',
-    'did you': 'didja',
+    'did you': 'didju',  # didja 는 '디자'에 가깝게 읽었다
     'fades in': 'fadesin',  # 띄어 쓰면 짧은 조각이라 기계음처럼 끊어 읽었다
 }
 
