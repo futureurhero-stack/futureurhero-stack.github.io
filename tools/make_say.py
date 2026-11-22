@@ -8,6 +8,16 @@ PAGE = os.path.join(ROOT, 'sceneshadow', 'index.html')
 OUT = os.path.join(ROOT, 'sceneshadow', 'assets', 'say')
 KEY = open(os.path.expanduser('~/.config/sceneshadow/google_tts_key')).read().strip()
 VOICE = 'en-US-Chirp3-HD-Aoede'
+# 철자대로 주면 음성이 또박또박 읽어 규칙이 안 들린다. 줄어든 소리를 들려줘야 하는 예시는 소리 나는 철자로 준다.
+# 여기를 바꾸면 해당 mp3 를 지우고 다시 돌린다.
+SPOKEN = {
+    'want to go': 'wanna go',
+    'I want to go home': 'I wanna go home',
+    'tell him': 'tellim',  # "tell 'im" 은 따옴표를 I(아이)로 읽었다
+    'going home': "goin' home",
+    'a lot of': 'a lotta',
+    'did you': 'didja',
+}
 
 
 def slug(text):
@@ -22,7 +32,7 @@ for t in texts:
     if os.path.exists(path):
         continue
     body = {
-        'input': {'text': t},
+        'input': {'text': SPOKEN.get(t, t)},
         'voice': {'languageCode': 'en-US', 'name': VOICE},
         'audioConfig': {'audioEncoding': 'MP3'},
     }
