@@ -502,6 +502,23 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
   .rule.wide .st-row { grid-template-columns: 1fr; gap: 6px; }
   .rule.wide .st-cat small { display: inline; margin-left: 6px; }
 }
+/* 들리니 세 가지 비교: 표 대신 카드 세 장이라 휴대폰에서도 가로로 넘치지 않는다 */
+.hear-compare { margin-top: 56px; }
+.hear-compare h3 { margin: 0 0 8px; font-size: 22px; letter-spacing: -0.02em; }
+.hear-compare .hc-sub { margin: 0 0 18px; color: var(--ink-2); font-size: 15px; word-break: keep-all; }
+.hc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.hc-card { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; }
+.hc-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.hc-head svg { width: 40px; height: 40px; padding: 9px; border-radius: 12px; background: var(--brand-soft); color: var(--brand); flex: none; }
+.hc-head b { display: block; font-size: 17px; color: #e8590c; }
+.hc-head small { color: var(--ink-3); font-size: 13px; }
+.hc-card dl { margin: 0; flex: 1; }
+.hc-card dl div { display: grid; grid-template-columns: 72px 1fr; gap: 8px; padding: 9px 0; border-top: 1px dashed var(--line); font-size: 14.5px; line-height: 1.5; }
+.hc-card dt { color: var(--ink-3); font-weight: 600; }
+.hc-card dd { margin: 0; color: var(--ink); word-break: keep-all; }
+.hc-tip { margin: 12px 0 0; padding: 10px 12px; border-radius: 10px; background: var(--brand-soft); color: var(--brand-deep); font-weight: 700; font-size: 14px; word-break: keep-all; }
+.hc-tip::before { content: "추천 · "; font-weight: 600; color: var(--brand); }
+@media (max-width: 920px) { .hc-grid { grid-template-columns: 1fr; } }
 .rules-note { margin-top: 40px; color: var(--ink-2); font-size: 15px; line-height: 1.7; word-break: keep-all; }
 @media (max-width: 920px) {
   .howto-video { grid-template-columns: 1fr; gap: 28px; margin-top: 56px; padding-top: 44px; }
@@ -827,7 +844,12 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
           <div class="rule"><h4>z</h4><p>s 와 같은 자리에서 목을 울려 "즈"에 가깝게 떨려요.</p><button class="ex" type="button" data-say="zoo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">zoo</span><span class="arrow">→</span><span class="ko">주<small>z</small>~</span></button></div>
         </div>
       </div>
-      <p class="rules-note">앱의 <b>들리니</b>는 영상에서 꺼낸 실제 소리를 받아 적은 뒤 이 규칙으로 풀어 주고, PC 확장 프로그램은 자막 문장을 같은 규칙으로 풀어 한글 발음·IPA로 보여 줘요. 한글 표기는 소리를 잡는 길잡이일 뿐, 정답은 언제나 원어민 소리예요. 따라 말할 땐 꼭 영상 소리를 들으며 맞춰 보세요.</p>
+      <div class="hear-compare">
+        <h3>들리니, 어디서 쓰면 좋을까요?</h3>
+        <p class="hc-sub">세 곳 모두 같은 발음 규칙 엔진을 써요. 다른 건 무슨 소리를 받아 분석하느냐예요.</p>
+        <div class="hc-grid"><div class="hc-card"><div class="hc-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg><div><b>앱 재생 화면</b><small>들리니 칩</small></div></div><dl><div><dt>듣는 소리</dt><dd>영상 파일에서 꺼낸 원본 소리</dd></div><div><dt>쓰는 곳</dt><dd>내 폴더에서 가져온 영상</dd></div><div><dt>정확도</dt><dd>가장 정확해요. 잡음이 없어요</dd></div><div><dt>실제 발음</dt><dd>배우가 줄이고 흘린 소리 그대로</dd></div><div><dt>한도</dt><dd>무료 하루 5번·30초</dd></div></dl><p class="hc-tip">파일이 있으면 이걸로</p></div><div class="hc-card"><div class="hc-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg><div><b>앱 들리니 탭</b><small>마이크</small></div></div><dl><div><dt>듣는 소리</dt><dd>폰 마이크로 녹음한 바깥 소리</dd></div><div><dt>쓰는 곳</dt><dd>TV·노트북·넷플릭스 앱 등 무엇이든</dd></div><div><dt>정확도</dt><dd>소음·울림에 따라 달라져요</dd></div><div><dt>실제 발음</dt><dd>깨끗하게 녹음되면 그대로</dd></div><div><dt>한도</dt><dd>무료 하루 5번·30초</dd></div></dl><p class="hc-tip">스피커로 크게, 폰은 가까이</p></div><div class="hc-card"><div class="hc-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/></svg><div><b>PC 확장 프로그램</b><small>귀 버튼</small></div></div><dl><div><dt>듣는 소리</dt><dd>소리 없이 자막 글자만</dd></div><div><dt>쓰는 곳</dt><dd>크롬의 넷플릭스·유튜브</dd></div><div><dt>정확도</dt><dd>자막 그대로라 받아쓰기 실수 없음</dd></div><div><dt>실제 발음</dt><dd>자막을 보고 계산한 표준 발음</dd></div><div><dt>한도</dt><dd>없어요. 무료·즉시</dd></div></dl><p class="hc-tip">문장마다 빠르게 훑어볼 때</p></div></div>
+      </div>
+      <p class="rules-note">한글 표기는 소리를 잡는 길잡이일 뿐, 정답은 언제나 원어민 소리예요. 따라 말할 땐 꼭 영상 소리를 들으며 맞춰 보세요.</p>
     </div>
   </section>
 
