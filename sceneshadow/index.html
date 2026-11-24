@@ -454,12 +454,6 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 .rule .more { margin-top: 4px; }
 .rule h5.sound { margin: 14px 0 0; font-size: 15px; color: var(--brand-deep); } /* 한 카드 안에서 소리별로 나눈 소제목 */
 .rule h5.sound small { margin-left: 4px; font-size: 13px; font-weight: 500; color: var(--ink-3); }
-.rule h5.sound.weak { color: var(--ink-2); }
-.rule .stress-list { list-style: none; margin: 6px 0 0; padding: 0; }
-.rule .stress-list li { padding: 8px 2px; border-bottom: 1px dashed var(--line); font-size: 15px; line-height: 1.5; word-break: keep-all; }
-.rule .stress-list li:last-child { border-bottom: 0; }
-.rule .stress-list small { color: var(--ink-3); font-size: 13px; }
-.rule .stress-list .ex-words { display: block; color: var(--brand-deep); font-weight: 600; }
 .rule .more ul { list-style: none; margin: 0; padding: 0; }
 /* 예시가 아주 긴 카드는 뒷부분을 접어 둔다. 아래 FAQ 용 details·summary 스타일을 덮는다 */
 .rule .more-rest { border-bottom: 0; }
@@ -475,6 +469,37 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 .rule .more .ko, .rule .more-rest .ko { font-weight: 700; color: var(--brand-deep); }
 .rule .more .ko:has(b) { font-weight: 500; color: var(--ink-2); } /* 강세 예시는 굵은 음절만 눈에 띄게 */
 .rule .more .ko b { font-weight: 800; color: var(--brand-deep); }
+/* 힘 주는 말 · 약한 말: 강·약 두 덩어리, 낱말은 칩으로. 센 말은 진하게, 약한 말은 흐리게 보여 리듬이 눈에 보이게 */
+.st-block { margin-top: 12px; border-radius: 14px; padding: 14px 14px 6px; }
+.st-block.strong { background: var(--brand-soft); }
+.st-block.weak { background: var(--bg-2); }
+.st-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.st-head b { font-size: 15px; }
+.st-head small { color: var(--ink-3); font-size: 12.5px; }
+.st-mark { width: 24px; height: 24px; border-radius: 8px; display: inline-grid; place-items: center; font-size: 12px; font-weight: 800; }
+.strong .st-mark { background: var(--brand); color: #fff; }
+.weak .st-mark { background: var(--bg); color: var(--ink-3); border: 1px solid var(--line); }
+.strong .st-head b { color: var(--brand-deep); }
+.weak .st-head b { color: var(--ink-2); }
+.st-row { padding: 9px 0; border-top: 1px solid rgba(76,88,214,.12); }
+.weak .st-row { border-top-color: var(--line); }
+.st-cat { font-size: 13px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
+.st-cat small { margin-left: 6px; font-weight: 500; color: var(--ink-3); }
+.st-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.st-chips span { font-size: 13.5px; line-height: 1; padding: 6px 9px; border-radius: 999px; white-space: nowrap; }
+.strong .st-chips span { background: var(--bg); color: var(--brand-deep); font-weight: 800; box-shadow: 0 1px 0 rgba(58,68,184,.12); }
+.weak .st-chips span { background: transparent; color: var(--ink-3); font-weight: 500; border: 1px dashed #cfd2e0; }
+.rule.wide { grid-column: 1 / -1; }
+.st-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.rule.wide .st-block { margin-top: 4px; }
+.rule.wide .st-row { display: grid; grid-template-columns: 132px 1fr; gap: 10px; align-items: baseline; }
+.rule.wide .st-cat { margin-bottom: 0; }
+.rule.wide .st-cat small { display: block; margin: 2px 0 0; }
+@media (max-width: 760px) {
+  .st-wrap { grid-template-columns: 1fr; }
+  .rule.wide .st-row { grid-template-columns: 1fr; gap: 6px; }
+  .rule.wide .st-cat small { display: inline; margin-left: 6px; }
+}
 .rules-note { margin-top: 40px; color: var(--ink-2); font-size: 15px; line-height: 1.7; word-break: keep-all; }
 @media (max-width: 920px) {
   .howto-video { grid-template-columns: 1fr; gap: 28px; margin-top: 56px; padding-top: 44px; }
@@ -785,9 +810,9 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
         <div class="rule-list">
           <div class="rule"><h4>단어 강세</h4><p>단어마다 힘 주는 음절이 하나 있어요. 굵은 음절만 크고 길게, 나머지는 약하게 말해요.</p><button class="ex" type="button" data-say="potato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">potato</span><span class="arrow">→</span><span class="ko st">퍼<b>테</b>이로우</span></button><div class="more"><ul><li><span class="en">computer</span><span class="arrow">→</span><span class="ko">컴<b>퓨</b>럴</span></li><li><span class="en">hotel</span><span class="arrow">→</span><span class="ko">호우<b>텔</b></span></li><li><span class="en">vacation</span><span class="arrow">→</span><span class="ko">베이<b>케</b>이션</span></li><li><span class="en">important</span><span class="arrow">→</span><span class="ko">임<b>폴</b>턴트</span></li><li><span class="en">yesterday</span><span class="arrow">→</span><span class="ko"><b>예</b>스떨데이</span></li></ul></div></div>
           <div class="rule"><h4>문장 리듬</h4><p>명사·동사 같은 내용어는 세게, 기능어는 약하게 말해요. 센 곳만 들려도 뜻이 잡혀요.</p><button class="ex" type="button" data-say="I want to go home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">I want to go home</span><span class="arrow">→</span><span class="ko st">아이<b>워</b>너<b>고</b>우<b>홈</b></span></button></div>
-          <div class="rule"><h4>힘 주는 말 · 약한 말</h4><p>뜻을 실어 나르는 말은 세게, 문장을 잇는 말은 약하게 지나가요. 센 말만 이어 들어도 뜻이 잡혀요.</p><h5 class="sound">힘 주는 말</h5><ul class="stress-list"><li><b>명사·고유명사</b> <small>사람·장소·물건 이름, 일반 명사</small><span class="ex-words">Tom, Seoul, coffee</span></li><li><b>일반동사</b><span class="ex-words">talk, see, run, take, get</span></li><li><b>부정어·부정 조동사</b><span class="ex-words">not, no, never, hardly, don't, can't, won't</span></li><li><b>의문사</b> <small>묻는 말 맨 앞</small><span class="ex-words">when, where, why, who, how</span></li><li><b>숫자·시간·장소 부사, 정도 부사</b><span class="ex-words">three, today, here, very, pretty, so, most</span></li></ul><h5 class="sound weak">약하게 지나가는 말 <small>문법 역할만 하는 기능어</small></h5><ul class="stress-list"><li><b>대명사</b><span class="ex-words">it, that, they, those, the one</span></li><li><b>인칭대명사 (주격·목적격)</b><span class="ex-words">I, you, he, she, me, him, her, us, them</span></li><li><b>관사</b><span class="ex-words">the, a, an</span></li><li><b>부정사 to</b><span class="ex-words">to go, to see, want to</span></li><li><b>완료형 have·has·had, 진행형 be 동사</b><span class="ex-words">have been, has done, is going, were talking</span></li><li><b>의문사 뒤 do·does·did</b><span class="ex-words">What do you…, Where did he…</span></li><li><b>그 밖의 조동사</b> <small>조동사로 쓰일 때</small><span class="ex-words">can, will, would, could, may</span></li><li><b>전치사</b><span class="ex-words">to, for, of, at, in, on, from, with</span></li><li><b>관계대명사</b> <small>앞말을 꾸밀 때</small><span class="ex-words">which, that, who, whom</span></li></ul></div>
           <div class="rule"><h4>슈와 (약한 "어")</h4><p>힘을 받지 않는 모음은 철자와 상관없이 흐린 "어"가 돼요.</p><button class="ex" type="button" data-say="banana"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">banana</span><span class="arrow">→</span><span class="ko st">버<b>내</b>너</span></button><div class="more"><ul><li><span class="en">about</span><span class="arrow">→</span><span class="ko">어<b>바</b>웃</span></li><li><span class="en">today</span><span class="arrow">→</span><span class="ko">터<b>데</b>이</span></li><li><span class="en">support</span><span class="arrow">→</span><span class="ko">써<b>폴</b>트</span></li><li><span class="en">problem</span><span class="arrow">→</span><span class="ko"><b>프라</b>블럼</span></li><li><span class="en">family</span><span class="arrow">→</span><span class="ko"><b>패</b>멀리</span></li></ul></div></div>
           <div class="rule"><h4>can 과 can't</h4><p>can 은 약하게 "컨", can't 는 세게 "캔" 하고 t 에서 멈춰요. 모음과 힘으로 구별해요.</p><button class="ex" type="button" data-say="I can do it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">I can do it</span><span class="arrow">→</span><span class="ko st">아이컨두윗</span></button><button class="ex" type="button" data-say="I can't do it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="en">I can't do it</span><span class="arrow">→</span><span class="ko st">아이<b>캔</b>,두윗</span></button></div>
+          <div class="rule wide"><h4>힘 주는 말 · 약한 말</h4><p>뜻을 실어 나르는 말은 세게, 문장을 잇는 말은 약하게 지나가요. 센 말만 이어 들어도 뜻이 잡혀요.</p><div class="st-wrap"><div class="st-block strong"><div class="st-head"><span class="st-mark">강</span><b>힘 주는 말</b><small>뜻을 실어 나르는 말</small></div><div class="st-row"><div class="st-cat">명사·고유명사<small>이름·물건</small></div><div class="st-chips"><span>Tom</span><span>Seoul</span><span>coffee</span></div></div><div class="st-row"><div class="st-cat">일반동사</div><div class="st-chips"><span>talk</span><span>see</span><span>run</span><span>take</span><span>get</span></div></div><div class="st-row"><div class="st-cat">부정어</div><div class="st-chips"><span>not</span><span>no</span><span>never</span><span>hardly</span><span>don't</span><span>can't</span><span>won't</span></div></div><div class="st-row"><div class="st-cat">의문사<small>묻는 말 맨 앞</small></div><div class="st-chips"><span>when</span><span>where</span><span>why</span><span>who</span><span>how</span></div></div><div class="st-row"><div class="st-cat">숫자·시간·장소·정도</div><div class="st-chips"><span>three</span><span>today</span><span>here</span><span>very</span><span>pretty</span><span>so</span><span>most</span></div></div></div><div class="st-block weak"><div class="st-head"><span class="st-mark">약</span><b>약하게 지나가는 말</b><small>문법 역할만 하는 기능어</small></div><div class="st-row"><div class="st-cat">대명사</div><div class="st-chips"><span>it</span><span>that</span><span>they</span><span>those</span><span>the one</span></div></div><div class="st-row"><div class="st-cat">인칭대명사<small>주격·목적격</small></div><div class="st-chips"><span>I</span><span>you</span><span>he</span><span>she</span><span>me</span><span>him</span><span>her</span><span>us</span><span>them</span></div></div><div class="st-row"><div class="st-cat">관사</div><div class="st-chips"><span>the</span><span>a</span><span>an</span></div></div><div class="st-row"><div class="st-cat">부정사 to</div><div class="st-chips"><span>to go</span><span>to see</span><span>want to</span></div></div><div class="st-row"><div class="st-cat">완료형·진행형</div><div class="st-chips"><span>have been</span><span>has done</span><span>is going</span><span>were talking</span></div></div><div class="st-row"><div class="st-cat">의문사 뒤 do</div><div class="st-chips"><span>What do you…</span><span>Where did he…</span></div></div><div class="st-row"><div class="st-cat">그 밖의 조동사</div><div class="st-chips"><span>can</span><span>will</span><span>would</span><span>could</span><span>may</span></div></div><div class="st-row"><div class="st-cat">전치사</div><div class="st-chips"><span>to</span><span>for</span><span>of</span><span>at</span><span>in</span><span>on</span><span>from</span><span>with</span></div></div><div class="st-row"><div class="st-cat">관계대명사<small>앞말을 꾸밀 때</small></div><div class="st-chips"><span>which</span><span>that</span><span>who</span><span>whom</span></div></div></div></div></div>
         </div>
       </div>
       <div class="rule-group">
